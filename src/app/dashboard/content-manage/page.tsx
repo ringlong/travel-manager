@@ -29,10 +29,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { Search, Filter, Plus, Trash2 } from 'lucide-react';
+import { Search, Plus, Trash2 } from 'lucide-react';
 import { ContentDialog } from './content-dialog';
 import { ContentGenerationDialog } from './content-generation-dialog';
 import { useContentStore } from '@/store/contents';
+import type { ContentData } from './content-dialog';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -45,7 +46,7 @@ export default function ContentManagePage() {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [generationDialogOpen, setGenerationDialogOpen] = useState(false);
-  const [editingContent, setEditingContent] = useState<any>(null);
+  const [editingContent, setEditingContent] = useState<ContentData | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deletingIds, setDeletingIds] = useState<number[]>([]);
 
@@ -96,9 +97,9 @@ export default function ContentManagePage() {
   };
 
   // 处理内容保存
-  const handleContentSubmit = (data: any) => {
+  const handleContentSubmit = (data: ContentData) => {
     if (editingContent) {
-      updateContent(editingContent.id, data);
+      updateContent(editingContent.id!, data);
     }
     setDialogOpen(false);
   };
@@ -287,7 +288,7 @@ export default function ContentManagePage() {
       <ContentDialog
         open={dialogOpen}
         onOpenChange={setDialogOpen}
-        initialData={editingContent}
+        initialData={editingContent!}
         onSubmit={handleContentSubmit}
       />
 

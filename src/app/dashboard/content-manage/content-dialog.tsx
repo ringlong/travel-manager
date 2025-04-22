@@ -30,6 +30,17 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
+export interface ContentData {
+  id?: number;
+  title: string;
+  content: string;
+  status: 'published' | 'draft' | 'archived';
+  author: string;
+  publishTime?: string;
+  views?: number;
+  comments?: number;
+}
+
 const formSchema = z.object({
   title: z.string().min(1, '标题不能为空'),
   content: z.string().min(1, '内容不能为空'),
@@ -40,8 +51,8 @@ const formSchema = z.object({
 type ContentDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  initialData?: any;
-  onSubmit: (data: any) => void;
+  initialData?: ContentData;
+  onSubmit: (data: ContentData) => void;
 };
 
 export function ContentDialog({

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Home, Users, MapPin, FileText, Settings, ListFilter } from 'lucide-react'; // Import icons
+import { Home, Users, MapPin, Settings, ListFilter } from 'lucide-react'; // Import icons
 
 const navItems = [
   { href: '/dashboard', label: '仪表盘', icon: Home },

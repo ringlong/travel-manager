@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type ScenicSpot = {
+export interface ScenicSpot {
   id: number;
   name: string;
   country: string;
@@ -9,7 +9,7 @@ type ScenicSpot = {
   rating: number;
   visitCount: string;
   status: string;
-};
+}
 
 type ScenicSpotStore = {
   scenicSpots: ScenicSpot[];

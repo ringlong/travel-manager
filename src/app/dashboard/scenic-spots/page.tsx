@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/select';
 import EditScenicSpotDialog from './edit-scenic-spot-dialog';
 import { useScenicSpotStore } from '@/store/scenic-spots';
+import type { ScenicSpot } from '@/store/scenic-spots';
 
 export default function ScenicSpotsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,7 +28,7 @@ export default function ScenicSpotsPage() {
   const [cityFilter, setCityFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [editingSpot, setEditingSpot] = useState<any>();
+  const [editingSpot, setEditingSpot] = useState<ScenicSpot | undefined>(undefined);
 
   const { scenicSpots, addScenicSpot, updateScenicSpot } = useScenicSpotStore();
 
