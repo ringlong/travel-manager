@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Home, Users, MapPin, Settings, ListFilter } from 'lucide-react'; // Import icons
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Home, Users, MapPin, Settings, ListFilter } from "lucide-react"; // Import icons
 
 const navItems = [
-  { href: '/dashboard', label: '仪表盘', icon: Home },
-  { href: '/dashboard/accounts', label: '账户管理', icon: Users },
-  { href: '/dashboard/scenic-spots', label: '景区管理', icon: MapPin },
-  { href: '/dashboard/content-manage', label: '内容管理', icon: ListFilter },
-  { href: '/dashboard/settings', label: '设置', icon: Settings },
+  { href: "/pages/dashboard", label: "仪表盘", icon: Home },
+  { href: "/pages/accounts", label: "账户管理", icon: Users },
+  { href: "/pages/scenic-spots", label: "景区管理", icon: MapPin },
+  { href: "/pages/content-manage", label: "内容管理", icon: ListFilter },
+  { href: "/pages/settings", label: "设置", icon: Settings },
 ];
 
 export default function Sidebar() {
@@ -24,15 +24,17 @@ export default function Sidebar() {
       </div>
       <nav className="flex-1 space-y-2">
         {navItems.map((item) => {
-          const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href));
+          const isActive =
+            pathname === item.href ||
+            (item.href !== "/dashboard" && pathname.startsWith(item.href));
           const Icon = item.icon;
           return (
             <Link href={item.href} key={item.href}>
               <Button
-                variant={isActive ? 'secondary' : 'ghost'}
+                variant={isActive ? "secondary" : "ghost"}
                 className={cn(
-                  'w-full justify-start',
-                  isActive && 'font-semibold'
+                  "w-full justify-start",
+                  isActive && "font-semibold"
                 )}
               >
                 <Icon className="mr-2 h-4 w-4" />
